@@ -15,6 +15,7 @@ export const StyledButton = styled.div`
     border-color: ${(props) => props.borderColor};
     border-radius: ${(props) => props.borderRadius};
     font-size: ${(props) => props.fontSize};
+    padding: ${(props) => props.padding};
     align-items: center;
     text-align: center;
     display: flex;
@@ -31,11 +32,13 @@ export const DefaultButton = ({
   height,
   textColor,
   bgColor,
+  padding,
   borderColor,
   borderRadius,
   urlImg,
   fontSize,
   buttonName,
+  fontawesome
 }) => {
   return (
     <StyledButton
@@ -46,13 +49,16 @@ export const DefaultButton = ({
       borderColor={borderColor}
       borderRadius={borderRadius}
       urlImg={urlImg}
+      padding = {padding}
       fontSize={fontSize}
       buttonName={buttonName}
+      fontawesome = {fontawesome}
     >
       <div className="btn">
         <button>
           {urlImg ? <img src={urlImg} alt="" /> : null}
-          <span>{buttonName}</span>
+          {fontawesome ? <i class={fontawesome}></i> : null}
+          {buttonName ? <span>{buttonName}</span> :null}
         </button>
       </div>
     </StyledButton>
