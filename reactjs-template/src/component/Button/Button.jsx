@@ -2,10 +2,8 @@ import styled from "styled-components";
 
 export const StyledButton = styled.div`
   .btn {
-    /* align-items: center; */
     text-align: center;
-    /* display: flex;
-    gap: 10px; */
+
   }
   button {
     width: ${(props) => props.width};
@@ -14,6 +12,7 @@ export const StyledButton = styled.div`
     background-color: ${(props) => props.bgColor};
     border-color: ${(props) => props.borderColor};
     border-radius: ${(props) => props.borderRadius};
+    border: ${(props)=> props.borderNone};
     font-size: ${(props) => props.fontSize};
     align-items: center;
     text-align: center;
@@ -33,9 +32,11 @@ export const DefaultButton = ({
   bgColor,
   borderColor,
   borderRadius,
+  borderNone,
   urlImg,
   fontSize,
   buttonName,
+  buttonType
 }) => {
   return (
     <StyledButton
@@ -45,12 +46,14 @@ export const DefaultButton = ({
       bgColor={bgColor}
       borderColor={borderColor}
       borderRadius={borderRadius}
+      borderNone={borderNone}
       urlImg={urlImg}
       fontSize={fontSize}
       buttonName={buttonName}
+      buttonType={buttonType}
     >
       <div className="btn">
-        <button>
+        <button type={buttonType}>
           {urlImg ? <img src={urlImg} alt="" /> : null}
           <span>{buttonName}</span>
         </button>
