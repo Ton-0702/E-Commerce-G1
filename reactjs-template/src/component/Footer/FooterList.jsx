@@ -1,29 +1,120 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const FooterListStyled = styled.div``;
-
-const FooterList = ({ list_footer_item, title, img, fontawesome }) => {
-  img.forEach((element) => {
-    console.log(element);
-  });
-  if (img) {
-    return (
-      <FooterListStyled list_footer={list_footer_item} title={title}>
-        <h2>chăm sóc khách hàng</h2>
-        <ul>
-          {img &&
-            img.map((element, index) => (
-              <li key={index}>
-                <Link>
-                  <img src={element} alt="" />
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </FooterListStyled>
-    );
+const FooterListStyled = styled.div`
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 1.25rem;
+    margin-top: 2.5rem;
+    text-transform: uppercase;
   }
+
+  a:hover {
+    color: rgb(24, 158, 255);
+  }
+`;
+
+const FooterListOnlyImg = styled.div`
+  ul {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* flex-wrap: wrap; */
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  li {
+    width: 3.75rem;
+    height: 1.875rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 0.125rem;
+  }
+`;
+
+const FooterListNotImg = styled.div`
+  ul {
+    text-decoration: none;
+    display: block;
+    color: rgba(0, 0, 0, 0.65);
+    list-style-type: none;
+    margin: 0 0 1rem;
+    padding: 0;
+  }
+
+  li {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.65);
+    overflow: hidden;
+  }
+
+  i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+`;
+
+const FooterList = ({ valueArray }) => {
+  const results = valueArray?.map((element) => {
+    const listItemsOnlyImg = element.children
+      .filter((child) => child.img)
+      .map((child, index) => (
+        <li key={index}>
+          <Link>
+            <img src={child.img} alt="" />
+          </Link>
+        </li>
+      ));
+
+    const listItemsNotImg = element.children
+      .filter((child) => child.titleItem)
+      ?.map(
+        (child, index) => (
+          console.log(child.fontawesome, child.titleItem),
+          (
+            <li key={index}>
+              <Link>
+                {child.fontawesome ? (
+                  <i className={child.fontawesome}></i>
+                ) : null}
+                <span>{child.titleItem}</span>
+              </Link>
+            </li>
+          )
+        )
+      );
+
+    return [
+      <FooterListStyled title={element.title}>
+        <h2>{element.title}</h2>
+        {listItemsOnlyImg && (
+          <FooterListOnlyImg>
+            <ul>{listItemsOnlyImg}</ul>
+          </FooterListOnlyImg>
+        )}
+        {listItemsNotImg && (
+          <FooterListNotImg>
+            <ul>{listItemsNotImg}</ul>
+          </FooterListNotImg>
+        )}
+      </FooterListStyled>,
+    ];
+  });
+
+  return results;
 };
 
 export { FooterList };
