@@ -8,11 +8,52 @@ import cod from "../../assets/Footer/cod.png";
 import tragop0 from "../../assets/Footer/o%.png";
 import pay from "../../assets/Footer/vnpay.png";
 import spaylater from "../../assets/Footer/spaylater.png";
+import qr_download from "../../assets/Footer/qr_download.png";
+import apple_download from "../../assets/Footer/apple_download.png";
+import google_play_download from "../../assets/Footer/google_play_download.png";
+import app_gallery_download from "../../assets/Footer/app_gallery_download.png";
+import { NavLink } from "react-router-dom";
 
 const FooterStyled = styled.div`
-  .footer-1 {
+  background-color: #fbfbfb;
+  font-size: 0.875rem;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+
+  .body_footer {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
+  }
+
+  .footer_footer {
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer_footer .NationRegion {
+    display: flex;
+  }
+
+  .footer_footer .NationRegion ul {
+    display: flex;
+  }
+
+  .footer_footer .NationRegion ul li{
+    list-style-type: none;
+    padding: 0 5px;
+  }
+
+  .footer_footer .NationRegion ul li:not(:last-child){
+    border-right: 1px solid rgba(0,0,0,.2);
+  }
+
+  .footer_footer .NationRegion ul li a{
+    text-decoration: none;
+    color: rgba(0,0,0,.54);
   }
 `;
 
@@ -137,16 +178,16 @@ const arrayFooterList = [
     title: "TẢI ỨNG DỤNG SHOPEE NGAY THÔI",
     children: [
       {
-        fontawesome: "fa-brands fa-facebook",
-        titleItem: "Facebook",
+        img_download: qr_download,
       },
       {
-        fontawesome: "fa-brands fa-instagram",
-        titleItem: "Instagram",
+        img_download: apple_download,
       },
       {
-        fontawesome: "fa-brands fa-linkedin",
-        titleItem: "Linkedin",
+        img_download: google_play_download,
+      },
+      {
+        img_download: app_gallery_download,
       },
     ],
   },
@@ -156,8 +197,49 @@ const Footer = () => {
   return (
     <FooterStyled>
       <div className="container">
-        <div className="footer-1">
+        <div className="body_footer">
           <FooterList valueArray={arrayFooterList}></FooterList>
+        </div>
+        <div className="footer_footer">
+          <p>© 2023 Shopee. Tất cả các quyền được bảo lưu.</p>
+          <div className="NationRegion">
+            <p>Quốc gia & Khu vực:</p>
+            <ul>
+              <li>
+                <NavLink>Singapore</NavLink>
+              </li>
+              <li>
+                <NavLink>Indonesia</NavLink>
+              </li>
+              <li>
+                <NavLink>Đài Loan</NavLink>
+              </li>
+              <li>
+                <NavLink>Thái Lan</NavLink>
+              </li>
+              <li>
+                <NavLink>Malaysia</NavLink>
+              </li>
+              <li>
+                <NavLink>Việt Nam</NavLink>
+              </li>
+              <li>
+                <NavLink>Philippines</NavLink>
+              </li>
+              <li>
+                <NavLink>Brazil</NavLink>
+              </li>
+              <li>
+                <NavLink>México</NavLink>
+              </li>
+              <li>
+                <NavLink>Columbia</NavLink>
+              </li>
+              <li>
+                <NavLink>Chile</NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </FooterStyled>
