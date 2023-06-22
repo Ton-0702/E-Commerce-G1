@@ -7,6 +7,21 @@ import free400 from "../../assets/HomePage/Carousel/free400.jpg";
 import sale from "../../assets/HomePage/Carousel/sale.jpg";
 import banner1 from "../../assets/HomePage/Carousel/200d.jpg";
 import banner2 from "../../assets/HomePage/Carousel/freeship.png";
+import linhkienmoi from "../../assets/HomePage/Category/linhkienmoi.webp";
+import linhkiencu from "../../assets/HomePage/Category/linhkiencu.webp";
+import tannhiet from "../../assets/HomePage/Category/tannhiet.webp";
+import laptop from "../../assets/HomePage/Category/laptop.webp";
+import pc from "../../assets/HomePage/Category/PC.webp";
+import vga from "../../assets/HomePage/Category/VGA.webp";
+import screen from "../../assets/HomePage/Category/screen.webp";
+import phukien from "../../assets/HomePage/Category/phukien.webp";
+import funitureGaming from "../../assets/HomePage/Category/futureGaming.webp";
+import phimchuottainghe from "../../assets/HomePage/Category/phimchuottainghe.webp";
+import thietbimang from "../../assets/HomePage/Category/thietbimang.webp";
+import thietbiamthanh from "../../assets/HomePage/Category/thietbiamthanh.webp";
+import camera from "../../assets/HomePage/Category/camera.webp";
+import thietbivanphong from "../../assets/HomePage/Category/thietbivanphong.webp";
+import { HomePageCate } from "./HomePageCate";
 
 const dataSlider = [
   {
@@ -17,6 +32,65 @@ const dataSlider = [
   },
   {
     img: sale,
+  },
+];
+
+const dataCate = [
+  {
+    img: linhkienmoi,
+    title: "Linh Kiện Mới",
+  },
+  {
+    img: linhkiencu,
+    title: "Linh Kiện Cũ",
+  },
+  {
+    img: tannhiet,
+    title: "Tản Nhiệt PC",
+  },
+  {
+    img: laptop,
+    title: "Laptop Chính Hãng",
+  },
+  {
+    img: pc,
+    title: "PC",
+  },
+  {
+    img: vga,
+    title: "Card Màn Hình",
+  },
+  {
+    img: screen,
+    title: "Màn Hình Máy Tính",
+  },
+  {
+    img: phukien,
+    title: "Phụ Kiện",
+  },
+  {
+    img: funitureGaming,
+    title: "Bàn, Ghế Gaming",
+  },
+  {
+    img: phimchuottainghe,
+    title: "Phím, Chuột, Tai Nghe",
+  },
+  {
+    img: thietbimang,
+    title: "Thiết Bị Mạng",
+  },
+  {
+    img: thietbiamthanh,
+    title: "Thiết Bị Âm Thanh",
+  },
+  {
+    img: camera,
+    title: "Camera, Thiết Bị Quan Sát",
+  },
+  {
+    img: thietbivanphong,
+    title: "Thiết Bị Văn Phòng",
   },
 ];
 
@@ -104,6 +178,27 @@ const CategoryStyled = styled.div`
   .category {
     background-color: #fff;
   }
+
+  .category .header_category{
+    display: flex;
+    align-items: center;
+    background: #fff;
+    height: 3.75rem;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    padding: 0 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .category .header_category h2{
+    font-size: 1rem;
+    color: rgba(0,0,0,.54);
+    font-weight: 500;
+  }
+
+  .category .body_category{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+  }
 `;
 
 const HomePage = () => {
@@ -145,7 +240,9 @@ const HomePage = () => {
             <div className="header_category">
               <h2>danh mục</h2>
             </div>
-            <div className="body_category"></div>
+            <div className="body_category">
+              <HomePageCate data={dataCate}></HomePageCate>
+            </div>
           </div>
         </div>
       </CategoryStyled>
